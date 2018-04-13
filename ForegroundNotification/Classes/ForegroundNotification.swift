@@ -47,13 +47,14 @@ open class ForegroundNotification {
         foregroundNotificationView.localNotification = localNotification
     }
     
-    public init(title: String?, subtitle: String?, category: String?, soundName: String?, userInfo: [AnyHashable: Any]?, localNotification: UILocalNotification?) {
+    public init(title: String?, subtitle: String?, userImage : UIImage, userProfileURL : String,  category: String?, soundName: String?, userInfo: [AnyHashable: Any]?, localNotification: UILocalNotification?) {
         
         foregroundNotificationView.titleLabel.text = title ?? ""
         foregroundNotificationView.subtitleTextView.text = subtitle ?? ""
         foregroundNotificationView.categoryIdentifier = category
         foregroundNotificationView.soundName = soundName
-        
+        foregroundNotificationView.imgImage.image = userImage
+//        foregroundNotificationView.imgImage.set
         foregroundNotificationView.userInfo = userInfo
         foregroundNotificationView.localNotification = localNotification
     }

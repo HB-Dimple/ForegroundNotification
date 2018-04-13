@@ -7,6 +7,7 @@
 //
 
 import AVFoundation
+import Kingfisher
 
 class ForegroundNotificationView: UIView, UITextViewDelegate {
     
@@ -29,7 +30,7 @@ class ForegroundNotificationView: UIView, UITextViewDelegate {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var subtitleTextView: UITextView!
     @IBOutlet var textView: UITextView!
-    
+    @IBOutlet var imgImage : UIImageView!
     @IBOutlet private var leftActionButton: UIButton!
     @IBOutlet private var rightActionButton: UIButton!
     @IBOutlet private var singleActionButton: UIButton!
@@ -154,7 +155,7 @@ class ForegroundNotificationView: UIView, UITextViewDelegate {
                 } else {
                     
                     titleLabel.text = (payload["alert"] as? [AnyHashable: Any])?["title"] as? String
-                    subtitleTextView.text = (payload["alert"] as? [AnyHashable: Any])?["body"] as? String
+                    subtitleTextView.attributedText = (payload["alert"] as? [AnyHashable: Any])?["body"] as? NSAttributedString
                 }
                 
                 categoryIdentifier = payload["category"] as? String
@@ -485,7 +486,7 @@ class ForegroundNotificationView: UIView, UITextViewDelegate {
         timerToDismissNotification?.invalidate()
         timerToDismissNotification = nil
         
-        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 1, options: .beginFromCurrentState, animations: {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.5, options: .beginFromCurrentState, animations: {
             
             self.topConstraintNotification.constant = -self.heightConstraintNotification.constant
             self.dimmingView.alpha = 0
